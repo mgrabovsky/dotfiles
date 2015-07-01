@@ -1,0 +1,36 @@
+xterm*faceName: DejaVu Sans Mono:size=10:antialias=true
+xterm*termName: xterm-256color
+xterm*utf8:     true
+xterm*selectToClipboard: true
+
+!-------------------------------------------------------------------------------
+! Colors (X::Poppy)
+! See also: dotshare.it
+*background: #f0f0f0
+*foreground: #181512
+*cursorColor: #181512
+
+!! black
+*color0:     #373737
+*color8:     #474747
+!! red (red)
+*color1:     #cc4141
+*color9:     #ba2929
+!! green (green)
+*color2:     #43803d
+*color10:    #2f632a
+!! yellow
+*color3:     #dbab3b
+*color11:    #c79520
+!! blue
+*color4:     #7882bf
+*color12:    #596196
+!! magenta (magenta)
+*color5:     #bf849c
+*color13:    #b06a86
+!! cyan (light blue)
+*color6:     #6aa9b0
+*color14:    #4d8b91
+!! white (pink)
+*color7:     #e39036
+*color15:    #c97820

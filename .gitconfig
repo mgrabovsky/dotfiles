@@ -1,0 +1,39 @@
+[user]
+	name = John Doe
+	email = john.doe@example.com
+[core]
+	pages = less
+[push]
+	default = simple
+[color]
+	interactive = auto
+	ui = auto
+	pager = true
+[color "status"]
+	branch = black yellow
+	nobranch = white red bold
+	untracked = magenta
+	changed = cyan
+	added = blue
+[color "branch"]
+	current = black yellow
+[color "diff"]
+	plain = white
+	meta = magenta
+	hunk = magenta
+	commit = blue
+	frag = magenta
+	new = bold blue
+	old = bold red
+	whitespace = white red
+[format]
+	pretty = oneline
+[log]
+	abbrevCommit = true
+	decorate = false
+	date = relative
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ci = commit
+	co = checkout
+	st = status
