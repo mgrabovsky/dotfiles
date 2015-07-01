@@ -1,0 +1,37 @@
+Config { font             = "xft:DejaVu Sans Mono:size=10:antialias=true"
+       , bgColor          = "#f0f0f0"
+       , fgColor          = "#474747"
+       , position         = Top
+       , lowerOnStart     = True
+       , hideOnStart      = False
+       , allDesktops      = True
+       , overrideRedirect = True -- maybe False
+       , pickBroadest     = False
+       , persistent       = False -- disable hiding/revealing
+       , border           = NoBorder -- BottomB
+       , borderColor      = "black"
+       , commands = [ Run Network "wlp2s0" [ "-L", "0", "-H", "100"
+                                           , "-t", "↓<rx>K ↑<tx>K ", "-S", "False"
+                                           , "-x", "N/A" ] 20
+                    , Run Wireless "wlp2s0" [ "-t", " <essid>", "-x", "N/A" ] 40
+                    , Run Cpu [ "-L", "20", "-H", "50"
+                              , "-n", "#c97820", "-h", "#ba2929" ] 10
+                    , Run Memory [ "-t", "Mem: <usedratio>%" ] 20
+                    , Run BatteryP [ "BAT0" ]
+                                [ "-t", "<acstatus><left>%"
+                                , "-L", "20", "-H", "40", "-p", "3"
+                                , "-l", "#cc4141", "-n", "#e39036"
+                                -- -O charging -i idle -o discharging
+                                , "--", "-O", "C", "-i", "I", "-o", "D"
+                                , "-L", "-15", "-H", "-5"
+                                , "-l", "#cc4141", "-m", "#e39036", "-h", "#43803d" ]
+                                200
+                    , Run Date "<fc=#7882bf>%a, %_d %b %Y</fc> %H:%M" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %cpu% <fc=#7882bf>·</fc> %memory% <fc=#7882bf>·</fc> %battery% <fc=#7882bf>·</fc>%wlp2s0wi% %wlp2s0%<fc=#7882bf>·</fc> %date% "
+       }
+
+-- vim: set ft=haskell:
