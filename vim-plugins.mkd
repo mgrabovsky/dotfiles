@@ -1,0 +1,31 @@
+## Essential
+- [pathogen.vim](https://github.com/tpope/vim-pathogen) -- allows plugins to be
+  placed in separate directories
+- [NERD Tree](https://github.com/scrooloose/nerdtree) -- tree explorer sidebar
+- [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) -- code completion
+- [vim-repeat](https://github.com/tpope/vim-repeat) -- allows dot-repeating of plugin
+  commands
+- [vim-surround](https://github.com/tpope/vim-surround) -- easy manipulation of
+  surrounding characters
+
+## Nice to have
+- [ack.vim](https://github.com/mileszs/ack.vim) -- integration with ack
+- [Align](https://github.com/vim-scripts/Align) -- align multiple lines according to
+  a regex (see also: [Tabular](https://github.com/godlygeek/tabular))
+- [vim-airline](https://github.com/bling/vim-airline) -- improved statusline
+- [vim-coffee-script](https://github.com/kchmck/vim-coffee-script) -- CoffeeScript
+  highlighting
+- [coq.vim](https://github.com/mgrabovsky/coq.vim) -- Coq syntax highlighting
+- [rust.vim](https://github.com/rust-lang/rust.vim) -- Rust syntax highlighting
+- [vim-colorschemes](https://github.com/flazz/vim-colorschemes) -- tons of pretty
+  colorschemes
+- [vimux](https://github.com/benmills/vimux) -- integration with tmux
+
+## Language-specific
+- [Emmet.vim](https://github.com/mattn/emmet-vim) -- faster writing of XML/HTML & CSS
+- [vim-javascript](https://github.com/pangloss/vim-javascript) -- improved
+  indentation and highlighting for JS
+- [vim-jsx](https://github.com/mxw/vim-jsx) -- support for React JSX
+- [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) -- Haskell sublanguages
+  highlighting and other goodies
+
