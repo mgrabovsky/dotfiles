@@ -134,9 +134,15 @@ autocmd FileType haskell setl expandtab nofoldenable
 autocmd FileType haskell inoremap <leader>{o {-# OPTIONS  #-}<ESC>3hi
 autocmd FileType haskell inoremap <leader>{l {-# LANGUAGE  #-}<ESC>3hi
 
+" ========================================
 " Plugins
+" ========================================
 " NERDTree
 nnoremap <F3> :NERDTreeToggle<CR>
+" CtrlP
+nnoremap <leader>bb :CtrlPBuffer<CR>
+nnoremap <leader>bm :CtrlPMixed<CR>
+nnoremap <leader>b :CtrlPMRU<CR>
 " hs2vim
 let g:haskell_conceal           = 0
 let g:haskell_folds             = 0
