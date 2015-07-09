@@ -25,7 +25,8 @@ editor in everyday work.
 
 -   **Essential**
     -   [pathogen.vim](https://github.com/tpope/vim-pathogen) – allows plugins to be
-        placed in separate directories
+        placed in separate directories (alternatives:
+        [Vundle](https://github.com/gmarik/Vundle.vim))
     -   [NERD Tree](https://github.com/scrooloose/nerdtree) – tree explorer sidebar
     -   [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) – code completion
     -   [vim-repeat](https://github.com/tpope/vim-repeat) – allows dot-repeating of
