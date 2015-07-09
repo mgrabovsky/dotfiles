@@ -1,0 +1,64 @@
+This repository aims to gather my most valuable and useful configuration files in one
+place so that I can (relatively) easily transfer them between machines, and save my
+productivity from suffering too much from the discomfort of default configs.
+
+The config files are currently just somewhat haphazardly tossed together in here. In
+the future, I'd like to have a section here for each one, and I'd like to comment
+them thoroughly.
+
+General inspirational sources:
+
+-   <http://dotshare.it/>
+-   <http://www.dotfiles.org/>
+
+## Vim
+
+Some inspiration:
+
+-   <https://github.com/br0ziliy/vim-on-steroids>
+-   <http://www.dotfiles.org/~mitry/.vimrc>
+
+### Plugins
+
+Here is a list of plugins that I deem to be very useful when using Vim as your main
+editor in everyday work.
+
+-   **Essential**
+    -   [pathogen.vim](https://github.com/tpope/vim-pathogen) – allows plugins to be
+        placed in separate directories
+    -   [NERD Tree](https://github.com/scrooloose/nerdtree) – tree explorer sidebar
+    -   [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) – code completion
+    -   [vim-repeat](https://github.com/tpope/vim-repeat) – allows dot-repeating of
+        plugin commands
+    -   [vim-surround](https://github.com/tpope/vim-surround) – easy manipulation of
+        surrounding characters
+
+-   **Nice to have**
+    -   [ack.vim](https://github.com/mileszs/ack.vim) – integration with ack
+    -   [Align](https://github.com/vim-scripts/Align) – align multiple lines
+        according to a regex (see also: [Tabular](https://github.com/godlygeek/tabular))
+    -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
+        file/buffer/project search
+    -   [vim-airline](https://github.com/bling/vim-airline) – improved statusline
+    -   [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
+        – CoffeeScript highlighting
+    -   [coq.vim](https://github.com/mgrabovsky/coq.vim) – Coq syntax highlighting
+    -   [rust.vim](https://github.com/rust-lang/rust.vim) – Rust syntax highlighting
+    -   [vim-colorschemes](https://github.com/flazz/vim-colorschemes) – tons of
+        pretty colorschemes
+    -   [vimux](https://github.com/benmills/vimux) – integration with tmux
+
+-   **Language-specific**
+    -   [Emmet.vim](https://github.com/mattn/emmet-vim) – faster writing of XML/HTML & CSS
+    -   [vim-javascript](https://github.com/pangloss/vim-javascript) – improved
+        indentation and highlighting for JS
+    -   [vim-jsx](https://github.com/mxw/vim-jsx) – support for React JSX
+    -   [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) – Haskell
+        sublanguages highlighting and other goodies
+
+## Licence
+
+All code within this repository is licensed under the [CC0 1.0 Universal
+licence](https://creativecommons.org/publicdomain/zero/1.0/).
+
+<!-- vim: set et: -->
