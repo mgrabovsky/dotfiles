@@ -103,11 +103,11 @@ zat() {
 }
 
 mkcd() {
-	mkdir -p $1 && cd $1
+	mkdir -p "$1" && cd "$1"
 }
 
 hgrep() {
-	history | grep $1
+	history | grep "$1"
 }
 
 alias password='< /dev/random tr -dc [:alnum:] | head -c ${1:-32};echo;'
