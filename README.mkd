@@ -15,6 +15,7 @@ General inspirational sources:
 
 Some inspiration:
 
+-   [Vim Tips wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
 -   <https://github.com/br0ziliy/vim-on-steroids>
 -   <http://www.dotfiles.org/~mitry/.vimrc>
 
