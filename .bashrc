@@ -100,17 +100,30 @@ pow() {
 	esac
 }
 
-zat() {
-	zathura "$@" 2>/dev/null & disown $!
+# Screen control shortcuts
+scr() {
+	case $1 in
+		off)
+			xset dpms force off ;;
+		saver)
+			case $2 in
+				on)
+					xset s on s blank -dpms ;;
+				off)
+					xset s off s noblank -dpms ;;
+			esac ;;
+		*)
+			echo 'Usage: scr <off|saver <on|off>>'
+			return 1
+	esac
 }
 
-mkcd() {
-	mkdir -p "$1" && cd "$1"
-}
+# TODO: generalise
+zat() { zathura "$@" 2>/dev/null & disown $! ; }
+coqide() { /usr/bin/coqide $* 2>/dev/null & disown $! ; }
+mkcd() { mkdir -p "$1" && cd "$1" ; }
+hgrep() { history | grep "$1" ; }
 
-hgrep() {
-	history | grep "$1"
-}
-
+# TODO: reiterate
 alias password='< /dev/random tr -dc [:alnum:] | head -c ${1:-32};echo;'
 
