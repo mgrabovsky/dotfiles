@@ -192,3 +192,9 @@ let g:airline_mode_map = {
 	\ '' : 'S·B',
 	\ }
 
+" Use the Silver Searcher instead of Ack if available
+system('ag --version')
+if v:shell_error == 0
+	let g:ackprg='ag --nogroup --nocolor --column'
+endif
+
