@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-# Run into tmux if we're not inside already
-[[ -z "$TMUX" ]] && exec tmux
+# Run tmux if we're not inside already and we're running on X
+[[ -z "$TMUX" && -n "$DISPLAY" ]] && exec tmux
 
 PS1='[\u@\h \W]\$ '
 
