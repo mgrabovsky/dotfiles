@@ -42,6 +42,8 @@ editor in everyday work.
     -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
         file/buffer/project search
     -   [vim-airline](https://github.com/bling/vim-airline) – improved statusline
+    -   [closetag.vim](https://github.com/vim-scripts/closetag.vim) – automatic
+        closing of brackets
     -   [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
         – CoffeeScript highlighting
     -   [coq.vim](https://github.com/mgrabovsky/coq.vim) – Coq syntax highlighting
