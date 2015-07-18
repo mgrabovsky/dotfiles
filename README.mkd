@@ -39,6 +39,8 @@ editor in everyday work.
     -   [ack.vim](https://github.com/mileszs/ack.vim) – integration with ack
     -   [Align](https://github.com/vim-scripts/Align) – align multiple lines
         according to a regex (see also: [Tabular](https://github.com/godlygeek/tabular))
+    -   [auto-pairs](https://github.com/jiangmiao/auto-pairs) – automatic closing of
+        brackets
     -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
         file/buffer/project search
     -   [vim-airline](https://github.com/bling/vim-airline) – improved statusline
