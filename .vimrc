@@ -3,17 +3,21 @@ execute pathogen#infect()
 " Automatic file type detection and indentation scripts
 filetype plugin indent on
 
-set encoding=utf-8
-set ttyfast
-set ffs=unix,dos,mac
-set ff=unix
+" UTF-8 witout BOM as the default file encoding
+set encoding=utf-8 nobomb
+" Output more characters for redrawing
+set ttyfast " Removed in Neovim, always set
+" Try the following EOL styles when editing new buffers,
+" use Unix style by default
+set fileformats=unix,dos,mac fileformat=unix
 
-" Syntax higlighting on by default
+" Set up default syntax highlighting
 syntax on
 " Colour scheme
 set background=light
-"colorscheme xoria256
-colorscheme reliable " xian
+colorscheme Tomorrow
+" 256 colours in terminal
+set t_Co=256
 
 " Modifier for some shortcuts
 let mapleader=','
@@ -22,19 +26,17 @@ let mapleader=','
 set noswapfile nobackup
 " Enable hidden buffers
 set hidden
+" Modern escapes in regular expressions
+set magic
 " Automatically detect case-(in)sensitiveness when matching
 set ignorecase smartcase
-" WOO, MAGIC
-set magic
 " Incremental search and higlighting
 set incsearch hlsearch
-set ignorecase smartcase
-" 256 colours in terminal
-set t_Co=256
-" Use tabs by default
-set noexpandtab
+" Use spaces by default
+set expandtab
 " Four-space tabs
-set tabstop=4 shiftwidth=4 softtabstop=4
+set shiftwidth=4 tabstop=4 softtabstop=4
+" Round indents to multiples of 'shiftwidth'
 set shiftround
 set smarttab
 set autoindent copyindent
