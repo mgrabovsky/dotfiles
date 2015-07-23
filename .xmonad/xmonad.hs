@@ -108,7 +108,7 @@ myPP = xmobarPP { ppCurrent = xmobarColor yellowLight ""
                 , ppHidden  = xmobarColor yellowDark ""
                 , ppHiddenNoWindows = id
                 , ppUrgent  = xmobarColor yellowDark ""
-                , ppTitle   = shorten 60
+                , ppTitle   = shorten 70
                 , ppSep     = pad "·"
                 , ppLayout  = (\l -> case l of
                                         "Full"          -> "[ ]"
