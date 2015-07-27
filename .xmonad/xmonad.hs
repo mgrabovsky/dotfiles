@@ -58,12 +58,14 @@ myKeys conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     -- Show the system menu
     , ((modMask,               xK_space),  spawn "/usr/bin/lxpanelctl menu")
     -- End LXDE session
-    , ((modMask,               xK_q),      spawn "/usr/bin/kill -9 lxsession")
+    , ((modMask .|. shiftMask, xK_q),      spawn "/usr/bin/kill -9 lxsession")
     -- Open LXDE logout modal
-    , ((modMask .|. shiftMask, xK_q),      spawn "/usr/bin/lxsession-logout")
+    , ((modMask              , xK_q),      spawn "/usr/bin/lxsession-logout")
+    -- Open LXDE "Run command" modal
+    , ((modMask              , xK_r),      spawn "/usr/bin/lxpanelctl run")
     -- Restart Xmonad
     --, ((modMask .|. shiftMask, xK_q),      restart "xmonad" True)
-    , ((modMask,               xK_r),      spawn "/usr/bin/xmonad --recompile && xmonad --restart")
+    , ((modMask .|. shiftMask, xK_r),      spawn "/usr/bin/xmonad --recompile && xmonad --restart")
     ] ++
     --
     -- mod-[1..4], Switch to workspace N
@@ -120,8 +122,14 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_t)
 -- Check using xprop
 -- XMonad.ManageHook
 myManageHook = composeAll
-    [ className =? "Xmessage"            --> doFloat
-    , className =? "xev"                 --> doFloat
+    [ className =? "Xmessage" --> doFloat
+    , title     =? "About Firefox Developer Edition" --> doFloat
+    , className =? "Coqide" <&&> title =? "Quit" --> doFloat
+    , resource  =? "Dialog" --> doFloat
+    , className =? "Mozilla Firefox" --> doFloat
+    , className =? "Toplevel Firefox" --> doFloat
+    , className =? "Lxpanel" --> doFloat
+    , className =? "Lxsession-logout" --> doFloat
     ]
 
 defaults = defaultConfig
