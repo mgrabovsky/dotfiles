@@ -132,6 +132,7 @@ myManageHook = composeAll
     , className =? "Toplevel Firefox" --> doFloat
     , className =? "Lxpanel" --> doFloat
     , className =? "Lxsession-logout" --> doFloat
+    , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> doFloat
     ]
 
 defaults = defaultConfig
