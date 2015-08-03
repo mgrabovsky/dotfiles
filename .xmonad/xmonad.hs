@@ -53,8 +53,10 @@ myKeys conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     , ((modMask,               xK_comma),  sendMessage (IncMasterN (-1)))
     -- Toggle panel
     , ((modMask,               xK_t),      sendMessage ToggleStruts)
-    -- Start Aurora
+    -- Start web browser (Aurora)
     , ((modMask,               xK_b),      spawn "/usr/bin/firefox-aurora")
+    -- Start file manager (PCManFM)
+    , ((modMask,               xK_b),      spawn "/usr/bin/pcmanfm")
     -- Show the system menu
     , ((modMask,               xK_space),  spawn "/usr/bin/lxpanelctl menu")
     -- End LXDE session
