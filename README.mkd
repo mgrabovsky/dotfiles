@@ -43,7 +43,8 @@ editor in everyday work.
         brackets
     -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
         file/buffer/project search
-    -   [NrrwRgn](https://github.com/chrisbra/NrrwRgn)
+    -   [NrrwRgn](https://github.com/chrisbra/NrrwRgn) – focus on and edit individual
+        snippets of code
     -   [vim-airline](https://github.com/bling/vim-airline) – improved statusline
     -   [vim-colorschemes](https://github.com/flazz/vim-colorschemes) – tons of
         pretty colorschemes
