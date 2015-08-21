@@ -11,6 +11,41 @@ General inspirational sources:
 -   <http://dotshare.it/>
 -   <http://www.dotfiles.org/>
 
+## Bash
+
+Yes, I'm still using Bash instead of zsh, fish or whatever the latest fad is.
+
+There are two files for setting up the bash environment:
+
+-   `.bash_profile`
+-   `.bashrc`
+
+## tmux
+
+`.tmux.conf`
+
+## irssi
+
+TODO
+
+## Xorg
+
+There are multiple configuration files for various components of the X Windows System
+and applications on top of it.
+
+-   `.xinitrc`
+-   `.Xresources` – general X settings and xterm configuration
+-   `.xbindkeysrc`
+
+## Xmonad
+
+`.xmonad/*.hs`
+`.xmobarrc`
+
+## Git
+
+`.gitconfig`
+
 ## Vim
 
 Some inspiration:
