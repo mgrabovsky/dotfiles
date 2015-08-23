@@ -1,12 +1,14 @@
-" Better plugin management
+" Better (some) plugin management
 execute pathogen#infect()
 " Automatic file type detection and indentation scripts
 filetype plugin indent on
 
-" UTF-8 witout BOM as the default file encoding
+" UTF-8 witout byte order mark as the default file encoding
 set encoding=utf-8 nobomb
-" Output more characters for redrawing
+" Output more characters to the screen for smoother UX
 set ttyfast " Removed in Neovim, always set
+" More frequent redraws
+set redrawtime=200
 " Try the following EOL styles when editing new buffers,
 " use Unix style by default
 set fileformats=unix,dos,mac fileformat=unix
@@ -19,16 +21,14 @@ colorscheme Tomorrow
 " 256 colours in terminal
 set t_Co=256
 
-" Modifier for some shortcuts
-let mapleader=','
-
 " Don't use swap or backup files
 set noswapfile nobackup
-" Enable hidden buffers
+" Enable hidden buffers, i.e., when you switch out of a buffer, it doesn't unload but
+" only hides
 set hidden
 " Modern escapes in regular expressions
 set magic
-" Automatically detect case-(in)sensitiveness when matching
+" Automatically detect case sensitivity when matching
 set ignorecase smartcase
 " Incremental search and higlighting
 set incsearch hlsearch
@@ -48,8 +48,6 @@ set scrolloff=4
 set autoread
 " Not word delimiters
 set iskeyword+=_,$,%,#
-" More frequent redraws
-set redrawtime=200
 
 set textwidth=85
 set wrap
@@ -88,9 +86,16 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
 " Move blockwise using j & k
 nnoremap j gj
 nnoremap k gk
+
+" Modifier for some shortcuts
+let mapleader=','
 
 " One key less
 nnoremap ; :
@@ -102,11 +107,11 @@ nmap <C-e> :b#<CR>
 " Closing buffers
 nnoremap <leader>bc :bd!<CR>
 " Switching between windows
-nnoremap <C-h>   <C-w>h
-nnoremap <C-j>   <C-w>j
-nnoremap <C-k>   <C-w>k
-nnoremap <C-l>   <C-w>l
-" Moving lines up and down
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" Moving lines and blocks up and down
 nnoremap <A-j> mz:m+<CR>`z
 nnoremap <A-k> mz:m-2<CR>`z
 vnoremap <A-j> :m'>+<CR>`<my`>mzgv`yo`z
@@ -116,7 +121,7 @@ nnoremap <leader>/ :let @/=''<CR>
 " Vimux shortcuts
 nnoremap <leader>vp :VimuxPromptCommand<CR>
 nnoremap <leader>vm :VimuxPromptCommand("make ")<CR>
-nnoremap <leader>vl :VimuxRunLastCommand<CR>
+nnoremap <F5> :VimuxRunLastCommand<CR>
 
 " Strip all trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
