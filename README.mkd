@@ -86,11 +86,14 @@ editor in everyday work.
     -   [vimux](https://github.com/benmills/vimux) – integration with tmux
 
 -   **Language-specific**
-    -   [clojure-static](https://github.com/guns/vim-clojure-static)
     -   [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
         – CoffeeScript highlighting
     -   [coq.vim](https://github.com/mgrabovsky/coq.vim) – Coq syntax highlighting
-    -   [fireplace](https://github.com/tpope/fireplace)
+    -   [clojure-static](https://github.com/guns/vim-clojure-static) – extra goodies
+        for working with Clojure
+    -   [fireplace](https://github.com/tpope/vim-fireplace) – Clojure REPL in Vim
+        -   [vim-fireplace-easy](https://github.com/ctford/vim-fireplace-easy)
+            – a sample configuration
     -   [closetag.vim](https://github.com/vim-scripts/closetag.vim) – easier closing
         of XML/HTML tags
     -   [Emmet.vim](https://github.com/mattn/emmet-vim) – faster writing of XML/HTML & CSS
