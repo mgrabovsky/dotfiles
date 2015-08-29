@@ -10,6 +10,7 @@ General inspirational sources:
 
 -   <http://dotshare.it/>
 -   <http://www.dotfiles.org/>
+-   [lahwaacz/dotfiles](https://github.com/lahwaacz/dotfiles)
 
 ## Bash
 
