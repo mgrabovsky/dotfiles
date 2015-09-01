@@ -11,6 +11,7 @@ General inspirational sources:
 -   <http://dotshare.it/>
 -   <http://www.dotfiles.org/>
 -   [lahwaacz/dotfiles](https://github.com/lahwaacz/dotfiles)
+-   [deterenkelt/dotfiles](https://github.com/deterenkelt/dotfiles)
 
 ## Bash
 
@@ -105,6 +106,10 @@ editor in everyday work.
     -   [rust.vim](https://github.com/rust-lang/rust.vim) – Rust syntax highlighting
     -   [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) – Haskell
         sublanguages highlighting and other goodies
+
+## Syslinux
+
+`boot/syslinux/syslinux.cfg`
 
 ## Licence
 
