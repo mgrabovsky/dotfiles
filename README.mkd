@@ -73,17 +73,18 @@ editor in everyday work.
 
 -   **Nice to have**
     -   [ack.vim](https://github.com/mileszs/ack.vim) – integration with ack
+    -   [airline](https://github.com/bling/vim-airline) – improved statusline
     -   [Align](https://github.com/vim-scripts/Align) – align multiple lines
         according to a regex (see also: [Tabular](https://github.com/godlygeek/tabular))
     -   [auto-pairs](https://github.com/jiangmiao/auto-pairs) – automatic closing of
         brackets
-    -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
-        file/buffer/project search
-    -   [NrrwRgn](https://github.com/chrisbra/NrrwRgn) – focus on and edit individual
-        snippets of code
-    -   [vim-airline](https://github.com/bling/vim-airline) – improved statusline
     -   [vim-colorschemes](https://github.com/flazz/vim-colorschemes) – tons of
         pretty colorschemes
+    -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
+        file/buffer/project search
+    -   [fugitive](https://github.com/tpope/vim-fugitive.git) – integration with Git
+    -   [NrrwRgn](https://github.com/chrisbra/NrrwRgn) – focus on and edit individual
+        snippets of code
     -   [vimux](https://github.com/benmills/vimux) – integration with tmux
 
 -   **Language-specific**
