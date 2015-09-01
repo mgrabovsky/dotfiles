@@ -10,33 +10,24 @@ XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]]
 *VT100*translations: #override Meta <Btn1Up>: exec-formatted("firefox-aurora '%t'", CLIPBOARD)
 
 !-------------------------------------------------------------------------------
-! Colors (X::Poppy)
-! See also: dotshare.it
-*background: #f0f0f0
-*foreground: #181512
-*cursorColor: #181512
+*background: #1d2426
+*foreground: #8fa388
 
-!! black
-*color0:     #373737
-*color8:     #474747
-!! red (red)
-*color1:     #cc4141
-*color9:     #ba2929
-!! green (green)
-*color2:     #43803d
-*color10:    #2f632a
-!! yellow
-*color3:     #dbab3b
-*color11:    #c79520
-!! blue
-*color4:     #7882bf
-*color12:    #596196
-!! magenta (magenta)
-*color5:     #bf849c
-*color13:    #b06a86
-!! cyan (light blue)
-*color6:     #6aa9b0
-*color14:    #4d8b91
-!! white (pink)
-*color7:     #e39036
-*color15:    #c97820
+*cursorcolor: #be5e1e
+
+*color0:  #39474a
+*color1:  #986345
+*color2:  #788249
+*color3:  #9b6a46
+*color4:  #3e5951
+*color5:  #b9924a
+*color6:  #5d796a
+*color7:  #d6c9a4
+*color8:  #4c5f63
+*color9:  #b07350
+*color10: #869151
+*color11: #af6b42
+*color12: #567a6e
+*color13: #d69d55
+*color14: #668574
+*color15: #e5dec9
