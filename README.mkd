@@ -12,6 +12,7 @@ General inspirational sources:
 -   <http://www.dotfiles.org/>
 -   [lahwaacz/dotfiles](https://github.com/lahwaacz/dotfiles)
 -   [deterenkelt/dotfiles](https://github.com/deterenkelt/dotfiles)
+-   [eevee/rc](https://github.com/eevee/rc)
 
 ## Bash
 
@@ -38,6 +39,7 @@ and applications on top of it.
 -   `.xinitrc`
 -   `.Xresources` – general X settings and xterm configuration
 -   `.xbindkeysrc`
+-   `.XCompose`
 
 ## Xmonad
 
