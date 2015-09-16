@@ -6,6 +6,9 @@ The config files are currently just somewhat haphazardly tossed together in here
 the future, I'd like to have a section here for each one, and I'd like to comment
 them thoroughly.
 
+If something is unclear or unknown, try the amazing Vim `:help` if applicable,
+otherwise hit the `man` pages, which are fantastic for most of these programs.
+
 General inspirational sources:
 
 -   <http://dotshare.it/>
@@ -38,12 +41,12 @@ and applications on top of it.
 
 -   `.xinitrc`
 -   `.Xresources` – general X settings and xterm configuration
--   `.xbindkeysrc`
--   `.XCompose`
+-   `.xbindkeysrc` – custom bindings for standard keys and shortcuts
+-   `.XCompose` – custom sequences for the Compose key
 
 ## Xmonad
 
-`.xmonad/*.hs`
+`.xmonad/xmonad.hs`
 `.xmobarrc`
 
 ## Git
