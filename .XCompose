@@ -90,6 +90,7 @@ include "%L"
 <Multi_key> <slash> <underscore>            : "∠" U2220 # ANGLE
 <Multi_key> <exclam> <3>                    : "ℇ" U2107 # EULER CONSTANT
 <Multi_key> <f> <comma>                     : "ƒ" U0192 # LATIN SMALL LETTER F WITH HOOK
+<Multi_key> <colon> <colon>                 : "∷" U2237 # PROPORTION
 
 # Greek letters
 <Multi_key> <ampersand> <A>                 : "Α" U0391 # alpha
