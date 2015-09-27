@@ -145,6 +145,7 @@ include "%L"
 
 # Mathematical symbols that look like Greek letters
 <Multi_key> <slash> <greater>               : "∆" U2206 # INCREMENT
-<Multi_key> <plus> <plus>                   : "∑" U2211 # N-ARY SUMMATION
+#<Multi_key> <plus> <plus>                   : "∑" U2211 # N-ARY SUMMATION
 <Multi_key> <asterisk> <asterisk>           : "∏" U220F # N-ARY PRODUCT
 
+# vim: set et:
