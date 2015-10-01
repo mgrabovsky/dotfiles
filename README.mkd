@@ -17,6 +17,19 @@ General inspirational sources:
 -   [deterenkelt/dotfiles](https://github.com/deterenkelt/dotfiles)
 -   [eevee/rc](https://github.com/eevee/rc)
 
+---
+
+-   [Bash](#bash)
+-   [tmux](#tmux)
+-   [irssi](#irssi)
+-   [Xorg](#xorg)
+-   [Xmonad](#xmonad)
+-   [Git](#git)
+-   [Vim](#vim)
+    -   [Plugins](#plugins)
+-   [Syslinux](#syslinux)
+-   [Copyright](#copyright)
+
 ## Bash
 
 Yes, I'm still using Bash instead of zsh, fish or whatever the latest fad is.
