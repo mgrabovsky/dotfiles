@@ -17,6 +17,8 @@ General inspirational sources:
 -   [deterenkelt/dotfiles](https://github.com/deterenkelt/dotfiles)
 -   [eevee/rc](https://github.com/eevee/rc)
 
+![](http://i.creativecommons.org/p/zero/1.0/80x15.png)
+
 ---
 
 -   [Bash](#bash)
