@@ -134,9 +134,9 @@ gpg-edit() {
 }
 
 run_and_detach() { "$@" > /dev/null 2>&1 & disown $! ; }
-zat() { run_and_detach /usr/bin/zathura ; }
-coqide() { run_and_detach /usr/bin/coqide ; }
-rlcoq() { rlwrap /usr/bin/coqtop ; }
+zat() { run_and_detach /usr/bin/zathura "$@" ; }
+coqide() { run_and_detach /usr/bin/coqide "$@" ; }
+rlcoq() { rlwrap /usr/bin/coqtop "$@" ; }
 mkcd() { mkdir -p "$1" && cd "$1" ; }
 hgrep() { history | grep "$1" ; }
 alias cd-='cd -'
