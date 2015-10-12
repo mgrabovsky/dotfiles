@@ -118,11 +118,28 @@ scr() {
 	esac
 }
 
-# TODO: generalise
-zat() { zathura "$@" 2>/dev/null & disown $! ; }
-coqide() { /usr/bin/coqide $* 2>/dev/null & disown $! ; }
+# Edit a PGP-encrypted file and reencrypt it using our key
+gpg-edit() {
+	if [[ $# != 1 ]]; then
+		echo 'usage: gpg-edit <file>'
+		return 1
+	fi
+
+	tmpfile=`mktemp`
+	# Use pipe redirection to avoid overwriting confirmations
+	gpg -d $1 > $tmpfile && $EDITOR $tmpfile && gpg -e $tmpfile > $1
+	shred -zun 30 $tmpfile
+
+	unset tmpfile
+}
+
+run_and_detach() { "$@" > /dev/null 2>&1 & disown $! ; }
+zat() { run_and_detach /usr/bin/zathura ; }
+coqide() { run_and_detach /usr/bin/coqide ; }
+rlcoq() { rlwrap /usr/bin/coqtop ; }
 mkcd() { mkdir -p "$1" && cd "$1" ; }
 hgrep() { history | grep "$1" ; }
+alias cd-='cd -'
 
 # TODO: reiterate
 alias password='< /dev/random tr -dc [:alnum:] | head -c ${1:-32};echo;'
