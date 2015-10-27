@@ -133,6 +133,12 @@ gpg-edit() {
 	unset tmpfile
 }
 
+gitcd() {
+	local base=$(basename $1)
+	local dir=${base%.git}
+	git clone $1 $dir && cd $dir
+}
+
 run_and_detach() { "$@" > /dev/null 2>&1 & disown $! ; }
 zat() { run_and_detach /usr/bin/zathura "$@" ; }
 coqide() { run_and_detach /usr/bin/coqide "$@" ; }
