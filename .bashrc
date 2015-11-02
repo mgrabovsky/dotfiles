@@ -127,7 +127,7 @@ gpg-edit() {
 
 	tmpfile=`mktemp`
 	# Use pipe redirection to avoid overwriting confirmations
-	gpg -d $1 > $tmpfile && $EDITOR $tmpfile && gpg -e $tmpfile > $1
+	gpg -d $1 > $tmpfile && $EDITOR $tmpfile && gpg -o - -e $tmpfile > $1
 	shred -zun 30 $tmpfile
 
 	unset tmpfile
