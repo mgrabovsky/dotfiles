@@ -123,9 +123,11 @@ editor in everyday work.
     -   [vim-javascript](https://github.com/pangloss/vim-javascript) – improved
         indentation and highlighting for JS
     -   [vim-jsx](https://github.com/mxw/vim-jsx) – support for React JSX
+    -   [LaTeX-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) – alleviates the
+        pain of writing LaTeX by a little bit
     -   [rust.vim](https://github.com/rust-lang/rust.vim) – Rust syntax highlighting
-    -   [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) – Haskell
-        sublanguages highlighting and other goodies
+    -   [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) – syntax
+        highlighting for Haskell sublanguages, Unicode conceals, and other goodies
 
 ## Syslinux
 
