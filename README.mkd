@@ -58,6 +58,7 @@ and applications on top of it.
 -   `.Xresources` – general X settings and xterm configuration
 -   `.xbindkeysrc` – custom bindings for standard keys and shortcuts
 -   `.XCompose` – custom sequences for the Compose key
+    -   another resource: [kragen/xcompose](https://github.com/kragen/xcompose)
 
 ## Xmonad
 
