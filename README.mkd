@@ -77,6 +77,8 @@ Some inspiration:
 -   <https://github.com/br0ziliy/vim-on-steroids>
 -   <http://www.dotfiles.org/~mitry/.vimrc>
 
+NeoVim has broken the standard config conventions and uses XDG instead, see [`:help nvim-from-vim`](https://github.com/neovim/neovim/blob/42047acb4f07c689936b051864c6b4448b1b6aa1/runtime/doc/nvim_from_vim.txt#L12-L18) for more information.
+
 ### Plugins
 
 Here is a list of plugins that I deem to be very useful when using Vim as your main
