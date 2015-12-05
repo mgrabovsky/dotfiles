@@ -56,7 +56,7 @@ myKeys conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     -- Start web browser (Aurora)
     , ((modMask,               xK_b),      spawn "/usr/bin/firefox-aurora")
     -- Start file manager (PCManFM)
-    , ((modMask,               xK_b),      spawn "/usr/bin/pcmanfm")
+    , ((modMask,               xK_f),      spawn "/usr/bin/pcmanfm")
     -- Show the system menu
     , ((modMask,               xK_space),  spawn "/usr/bin/lxpanelctl menu")
     -- End LXDE session
@@ -68,6 +68,10 @@ myKeys conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     -- Restart Xmonad
     --, ((modMask .|. shiftMask, xK_q),      restart "xmonad" True)
     , ((modMask .|. shiftMask, xK_r),      spawn "/usr/bin/xmonad --recompile && xmonad --restart")
+    -- Take a screenshot of the whole screen
+    , ((modMask              , xK_s),      spawn "/usr/bin/gnome-screenshot")
+    -- Take a screenshot of selected area
+    , ((modMask .|. shiftMask, xK_s),      spawn "/usr/bin/gnome-screenshot -a")
     ] ++
     --
     -- mod-[1..4], Switch to workspace N
