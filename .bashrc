@@ -13,7 +13,7 @@ PAGER=less
 BROWSER=firefox-aurora
 PDFVIEWER='zathura %s 2>/dev/null & disown $!'
 PSVIEWER='zathura %s 2>/dev/null & disown $!'
-EDITOR=vim
+EDITOR=nvim
 PS1='\[\033[31m\]\u@\h$\[\033[0m\] '
 PS2='\[\033[31m>\]\[\033[0m\] '
 #PS1='\[\033[31m\]\u@\h:\[\033[36m\]\w $\[\033[0m\] '
@@ -23,8 +23,8 @@ export PAGER BROWSER PDFVIEWER PSVIEWER EDITOR PS1 PS2
 
 export RLWRAP_HOME=~/.rlwrap
 
-# Have cabal scripts in PATH
-export PATH=$PATH:~/.cabal/bin
+# Add cabal-installed and user-specific executables to PATH
+export PATH=$PATH:~/.cabal/bin:~/.local/bin
 
 # In history, ignore lines starting with a space and
 # delete prior duplicates
@@ -144,9 +144,16 @@ zat() { run_and_detach /usr/bin/zathura "$@" ; }
 coqide() { run_and_detach /usr/bin/coqide "$@" ; }
 rlcoq() { rlwrap /usr/bin/coqtop "$@" ; }
 mkcd() { mkdir -p "$1" && cd "$1" ; }
-hgrep() { history | grep "$1" ; }
+hgrep() { history | egrep -i "$1" ; }
 alias cd-='cd -'
 
 # TODO: reiterate
-alias password='< /dev/random tr -dc [:alnum:] | head -c ${1:-32};echo;'
+alias password='< /dev/urandom tr -dc [:alnum:] | head -c ${1:-40};echo;'
+alias password2='< /dev/urandom tr -dc [:graph:] | head -c ${1:-40};echo;'
+alias wcrb='mpv http://audio.wgbh.org/otherWaysToListen/classicalNewEngland.pls'
+alias t='python2 ~/builds/t/t.py --task-dir ~/.tasks --list tasks'
+
+# Display a Markdown file as a man page
+# Source: http://stackoverflow.com/a/7603703/227159
+mdman() { pandoc -s -f markdown -t man "$1" | man -l - ; }
 
