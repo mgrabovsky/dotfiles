@@ -91,6 +91,9 @@ include "%L"
 <Multi_key> <exclam> <3>                    : "ℇ" U2107 # EULER CONSTANT
 <Multi_key> <f> <comma>                     : "ƒ" U0192 # LATIN SMALL LETTER F WITH HOOK
 <Multi_key> <colon> <colon>                 : "∷" U2237 # PROPORTION
+<Multi_key> <bar> <bar>                     : "‖" U2016 # DOUBLE VERTICAL LINE
+<Multi_key> <bar> <minus>                   : "⊢" U22A2 # RIGHT TACK
+<Multi_key> <bar> <equal>                   : "⊨" U22A8
 
 # Greek letters
 <Multi_key> <ampersand> <A>                 : "Α" U0391 # alpha

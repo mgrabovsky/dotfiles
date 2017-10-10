@@ -1,4 +1,4 @@
-xterm*faceName: DejaVu Sans Mono:size=10:antialias=true
+xterm*faceName: Consolas for Powerline:size=10:antialias=true
 xterm*termName: xterm-256color
 xterm*utf8:     true
 xterm*selectToClipboard: true

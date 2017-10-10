@@ -119,8 +119,8 @@ myPP = xmobarPP { ppCurrent = xmobarColor yellowLight ""
                 , ppTitle   = shorten 70
                 , ppSep     = pad "·"
                 , ppLayout  = (\l -> case l of
-                                        "Full"          -> "[ ]"
-                                        "Maximize Tall" -> "|||"
+                                        "Full"          -> "[F]"
+                                        "Maximize Tall" -> "X|="
                                         _               -> "[-]")
                 }
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_t)
@@ -129,9 +129,9 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_t)
 -- XMonad.ManageHook
 myManageHook = composeAll
     [ className =? "Xmessage" --> doFloat
+    , resource  =? "Dialog" --> doFloat
     , title     =? "About Firefox Developer Edition" --> doFloat
     , className =? "Coqide" <&&> title =? "Quit" --> doFloat
-    , resource  =? "Dialog" --> doFloat
     , className =? "Mozilla Firefox" --> doFloat
     , className =? "Toplevel Firefox" --> doFloat
     , className =? "Lxpanel" --> doFloat
@@ -146,7 +146,7 @@ defaults = defaultConfig
     , handleEventHook    = ewmhDesktopsEventHook
     , startupHook        = ewmhDesktopsStartup
     , modMask            = mod4Mask -- Windows key
-    , terminal           = "uxterm"
+    , terminal           = "termite"
     , keys               = myKeys
     , mouseBindings      = myMice
     , workspaces         = myWorkspaces

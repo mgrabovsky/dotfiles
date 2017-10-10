@@ -10,7 +10,7 @@
 PS1='[\u@\h \W]\$ '
 
 PAGER=less
-BROWSER=firefox-aurora
+BROWSER=firefox-nightly
 PDFVIEWER='zathura %s 2>/dev/null & disown $!'
 PSVIEWER='zathura %s 2>/dev/null & disown $!'
 EDITOR=nvim
@@ -66,6 +66,52 @@ export LESS_TERMCAP_so=$(tput sgr 43)
 export LESS_TERMCAP_us=$yellow
 # End underline
 export LESS_TERMCAP_ue=$default
+
+# Perform important updates of system, packages, etc.
+update() {
+	OPTIND=1
+	pkgs=1
+	locate=1
+	vim=1
+	cabal=1
+	stack=1
+
+	# Parse arguments
+	while getopts 'PLVCS' opt; do
+		case "$opt" in
+			P) pkgs= ;;
+			L) locate= ;;
+			V) vim= ;;
+			C) cabal= ;;
+            S) stack= ;;
+		esac
+	done
+
+	shift $((OPTIND-1))
+
+	if [[ -n "$pkgs" ]]; then
+		echo -e "\033[32mUpdating packages...\033[0m"
+		sudo pacman -Syu
+	fi
+	if [[ -n "$locate" ]]; then
+		echo -e "\n\033[32mUpdating locate database...\033[0m"
+		sudo updatedb && echo 'Done'
+	fi
+	if [[ -n "$vim" ]]; then
+		echo -e "\n\033[32mUpdating vim plugins...\033[0m"
+		~/.vim/bundle/update-all.sh
+	fi
+	if [[ -n "$cabal" ]]; then
+		echo -e "\n\033[32mUpdating Cabal package database...\033[0m"
+		cabal update
+	fi
+	if [[ -n "$stack" ]]; then
+		echo -e "\n\033[32mUpdating Stack package index...\033[0m"
+		stack update
+	fi
+
+	unset opt pkgs locate vim cabal stack
+}
 
 # Start OpenVPN with given config file
 vpn() {
@@ -146,10 +192,12 @@ rlcoq() { rlwrap /usr/bin/coqtop "$@" ; }
 mkcd() { mkdir -p "$1" && cd "$1" ; }
 hgrep() { history | egrep -i "$1" ; }
 alias cd-='cd -'
+alias pgrep='pgrep -a'
+alias sshe='exec ssh'
 
 # TODO: reiterate
-alias password='< /dev/urandom tr -dc [:alnum:] | head -c ${1:-40};echo;'
-alias password2='< /dev/urandom tr -dc [:graph:] | head -c ${1:-40};echo;'
+alias password='< /dev/urandom tr -dc [:alnum:] | head -c 40; echo;'
+alias password2='< /dev/urandom tr -dc [:graph:] | head -c 40; echo;'
 alias wcrb='mpv http://audio.wgbh.org/otherWaysToListen/classicalNewEngland.pls'
 alias t='python2 ~/builds/t/t.py --task-dir ~/.tasks --list tasks'
 

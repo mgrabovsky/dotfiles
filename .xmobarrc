@@ -1,6 +1,6 @@
-Config { font             = "xft:DejaVu Sans Mono:size=10:antialias=true"
+Config { font             = "xft:Consolas for Powerline:size=9:antialias=true"
        , bgColor          = "#f0f0f0"
-       , fgColor          = "#474747"
+       , fgColor          = "#444"
        , position         = Top
        , lowerOnStart     = True
        , hideOnStart      = False
@@ -13,15 +13,16 @@ Config { font             = "xft:DejaVu Sans Mono:size=10:antialias=true"
        , commands = [ Run Network "wlp2s0" [ "-L", "0", "-H", "100"
                                            , "-t", "↓<rx>K ↑<tx>K ", "-S", "False"
                                            , "-x", "N/A" ] 20
-                    , Run Wireless "wlp2s0" [ "-t", " <essid>", "-x", "N/A" ] 40
-                    , Run Cpu [ "-L", "20", "-H", "50"
+                    , Run Wireless "wlp2s0" [ "-t", " <essid>", "-x", "<fc=#aaa>N/A</fc>" ] 40
+                    , Run Cpu [ "-t", "<total>%"
+                              , "-L", "20", "-H", "50"
                               , "-n", "#c97820", "-h", "#ba2929" ] 10
-                    , Run Memory [ "-t", "Mem: <usedratio>%" ] 20
+                    , Run Memory [ "-t", "<usedratio>%" ] 20
                     , Run BatteryP [ "BAT0" ]
                                 [ "-t", "<acstatus><left>%"
                                 , "-L", "20", "-H", "40", "-p", "3"
                                 , "-l", "#cc4141", "-n", "#e39036"
-                                -- -O charging -i idle -o discharging
+                                -- -O charging / -i idle / -o discharging
                                 , "--", "-O", "C", "-i", "I", "-o", "D"
                                 , "-L", "-15", "-H", "-5"
                                 , "-l", "#cc4141", "-m", "#e39036", "-h", "#43803d" ]
@@ -31,7 +32,7 @@ Config { font             = "xft:DejaVu Sans Mono:size=10:antialias=true"
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %cpu% <fc=#7882bf>·</fc> %memory% <fc=#7882bf>·</fc> %battery% <fc=#7882bf>·</fc>%wlp2s0wi% %wlp2s0%<fc=#7882bf>·</fc> %date% "
+       , template = " %StdinReader% }{ %cpu% <fc=#ddd>/</fc> %memory% <fc=#ddd>/</fc> %battery% <fc=#ddd>/</fc>%wlp2s0wi% %wlp2s0%<fc=#ddd>/</fc> %date% "
        }
 
 -- vim: set ft=haskell:

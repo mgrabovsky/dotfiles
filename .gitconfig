@@ -1,10 +1,12 @@
 [user]
-	name = John Doe
-	email = john.doe@example.com
+	name = Matěj Grabovský
+	email = matej@mgrabovsky.net
 [core]
 	pages = less
 [push]
 	default = simple
+[pull]
+	rebase = true
 [color]
 	interactive = auto
 	ui = auto
@@ -18,13 +20,12 @@
 [color "branch"]
 	current = black yellow
 [color "diff"]
-	plain = white
 	meta = magenta
 	hunk = magenta
 	commit = blue
 	frag = magenta
-	new = bold blue
-	old = bold red
+	new = green
+	old = red
 	whitespace = white red
 [format]
 	pretty = oneline
@@ -33,7 +34,12 @@
 	decorate = false
 	date = relative
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	a = add
 	ci = commit
 	co = checkout
+    d = diff
+    ds = diff --stat
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	p = push
 	st = status
+	ru = remote update

@@ -65,6 +65,10 @@ and applications on top of it.
 `.xmonad/xmonad.hs`
 `.xmobarrc`
 
+## termite
+
+`.config/termite/`
+
 ## Git
 
 `.gitconfig`

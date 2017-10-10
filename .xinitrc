@@ -18,6 +18,9 @@ xsetroot -cursor_name left_ptr &
 # Start LXDE
 exec startlxde
 
+# Start XMonad
+exec xmonad
+
 # Start Redshift to be easier on the eyes
 DISPLAY=:0 /usr/bin/redshift &
 

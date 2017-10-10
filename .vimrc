@@ -13,7 +13,7 @@ set redrawtime=200
 " use Unix style by default
 set fileformats=unix,dos,mac fileformat=unix
 
-" Set up default syntax highlighting
+" Syntax higlighting on by default
 syntax on
 " Colour scheme
 set background=light
@@ -21,10 +21,13 @@ colorscheme Tomorrow
 " 256 colours in terminal
 set t_Co=256
 
+" Modifier for some shortcuts
+let mapleader=','
+let maplocalleader='\'
+
 " Don't use swap or backup files
 set noswapfile nobackup
-" Enable hidden buffers, i.e., when you switch out of a buffer, it doesn't unload but
-" only hides
+" Enable hidden buffers
 set hidden
 " Modern escapes in regular expressions
 set magic
@@ -32,10 +35,11 @@ set magic
 set ignorecase smartcase
 " Incremental search and higlighting
 set incsearch hlsearch
+set ignorecase smartcase
 " Use spaces by default
 set expandtab
 " Four-space tabs
-set shiftwidth=4 tabstop=4 softtabstop=4
+set tabstop=4 shiftwidth=4 softtabstop=4
 " Round indents to multiples of 'shiftwidth'
 set shiftround
 set smarttab
@@ -66,6 +70,8 @@ set ruler
 set laststatus=2
 set shortmess=aOtT
 set complete=.,w,b,t,i
+" Don't put two spaces after ., ! and ? when formatting with gq, J, etc.
+set nojoinspaces
 
 set history=1000
 set undolevels=1000
@@ -73,6 +79,8 @@ set title
 set visualbell noerrorbells
 " Don't redraw while executing macros
 set lazyredraw
+" Disable mouse in terminal
+set mouse=
 
 set nolist
 set listchars=tab:\ \ ,trail:.
@@ -93,9 +101,6 @@ vnoremap <down> <nop>
 " Move blockwise using j & k
 nnoremap j gj
 nnoremap k gk
-
-" Modifier for some shortcuts
-let mapleader=','
 
 " One key less
 nnoremap ; :
@@ -121,7 +126,7 @@ nnoremap <leader>/ :let @/=''<CR>
 " Vimux shortcuts
 nnoremap <leader>vp :VimuxPromptCommand<CR>
 nnoremap <leader>vm :VimuxPromptCommand("make ")<CR>
-nnoremap <F5> :VimuxRunLastCommand<CR>
+nnoremap <leader>vl :VimuxRunLastCommand<CR>
 
 " Strip all trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
@@ -135,6 +140,102 @@ function! X11Clipboard()
 	call system('xclip -selection c', @r)
 endfunction
 vnoremap <F9>"ry:call X11Clipboard()<CR>
+
+" Hex editing
+" ex command for toggling hex mode - define mapping if desired
+command! -bar Hexmode call ToggleHex()
+
+" helper function to toggle hex mode
+function! ToggleHex()
+  " hex mode should be considered a read-only operation
+  " save values for modified and read-only for restoration later,
+  " and clear the read-only flag for now
+  let l:modified=&mod
+  let l:oldreadonly=&readonly
+  let &readonly=0
+  let l:oldmodifiable=&modifiable
+  let &modifiable=1
+  if !exists("b:editHex") || !b:editHex
+    " save old options
+    let b:oldft=&ft
+    let b:oldbin=&bin
+    " set new options
+    setlocal binary " make sure it overrides any textwidth, etc.
+    let &ft="xxd"
+    " set status
+    let b:editHex=1
+    " switch to hex editor
+    %!xxd
+  else
+    " restore old options
+    let &ft=b:oldft
+    if !b:oldbin
+      setlocal nobinary
+    endif
+    " set status
+    let b:editHex=0
+    " return to normal editing
+    %!xxd -r
+  endif
+  " restore values for modified and read only state
+  let &mod=l:modified
+  let &readonly=l:oldreadonly
+  let &modifiable=l:oldmodifiable
+endfunction
+
+nnoremap <A-h> :Hexmode<CR>
+inoremap <A-h> <Esc>:Hexmode<CR>
+vnoremap <A-h> :<C-U>Hexmode<CR>
+
+" Automatically hex edit binary files
+if has("autocmd")
+  " vim -b : edit binary using xxd-format!
+  augroup Binary
+    au!
+
+    " set binary option for all binary files before reading them
+    au BufReadPre *.bin,*.hex setlocal binary
+
+    " if on a fresh read the buffer variable is already set, it's wrong
+    au BufReadPost *
+          \ if exists('b:editHex') && b:editHex |
+          \   let b:editHex = 0 |
+          \ endif
+
+    " convert to hex on startup for binary files automatically
+    au BufReadPost *
+          \ if &binary | Hexmode | endif
+
+    " When the text is freed, the next time the buffer is made active it will
+    " re-read the text and thus not match the correct mode, we will need to
+    " convert it again if the buffer is again loaded.
+    au BufUnload *
+          \ if getbufvar(expand("<afile>"), 'editHex') == 1 |
+          \   call setbufvar(expand("<afile>"), 'editHex', 0) |
+          \ endif
+
+    " before writing a file when editing in hex mode, convert back to non-hex
+    au BufWritePre *
+          \ if exists("b:editHex") && b:editHex && &binary |
+          \  let oldro=&ro | let &ro=0 |
+          \  let oldma=&ma | let &ma=1 |
+          \  silent exe "%!xxd -r" |
+          \  let &ma=oldma | let &ro=oldro |
+          \  unlet oldma | unlet oldro |
+          \ endif
+
+    " after writing a binary file, if we're in hex mode, restore hex mode
+    au BufWritePost *
+          \ if exists("b:editHex") && b:editHex && &binary |
+          \  let oldro=&ro | let &ro=0 |
+          \  let oldma=&ma | let &ma=1 |
+          \  silent exe "%!xxd" |
+          \  exe "set nomod" |
+          \  let &ma=oldma | let &ro=oldro |
+          \  unlet oldma | unlet oldro |
+          \ endif
+  augroup END
+endif
 
 " Language specific settings
 autocmd FileType haskell setl expandtab nofoldenable
@@ -166,8 +267,7 @@ let g:haskell_cpp               = 0
 let g:haskell_haddock           = 1
 let g:haskell_multiline_strings = 1
 " Airline
-"let g:airline_theme='bubblegum'
-let g:airline_theme='sol'
+let g:airline_theme='distinguished'
 let g:airline#extensions#whitespace#enabled=0
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -199,9 +299,44 @@ let g:airline_mode_map = {
 	\ '' : 'S·B',
 	\ }
 
-" Use the Silver Searcher instead of Ack if available
-system('ag --version')
-if v:shell_error == 0
-	let g:ackprg='ag --nogroup --nocolor --column'
-endif
+" YouCompleteMe settings
+let g:ycm_key_list_select_completion = ['<TAB>']
+let g:ycm_key_list_previous_completion = ['<C-p>']
+let g:ycm_key_invoke_completion = '<C-n>'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Use the Silver Searcher instead of Ack
+let g:ackprg='ag --nogroup --nocolor --column'
+
+" ========================================
+" Neovim terminal mode
+" ========================================
+tnoremap <Esc> <C-\><C-n>
+
+" ========================================
+" Vim Polyglot
+" ========================================
+let g:polyglot_disabled = [ 'haskell' ]
+
+" ========================================
+" Syntastic
+" ========================================
+map <Leader>s :SyntasticToggleMode<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" ========================================
+" ghc-mod
+" ========================================
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
 

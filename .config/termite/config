@@ -1,0 +1,46 @@
+[colors]
+
+# special
+foreground      = #d0d0d0
+foreground_bold = #d0d0d0
+cursor          = #d0d0d0
+background      = #222222
+
+# black
+color0  = #151515
+color8  = #505050
+
+# red
+color1  = #ac4142
+color9  = #dd5456
+
+# green
+color2  = #90a959
+color10 = #badb74
+
+# yellow
+color3  = #f4bf75
+color11 = #ffe47a
+
+# blue
+color4  = #6a9fb5
+color12 = #88cbe8
+
+# magenta
+color5  = #aa759f
+color13 = #dd99d0
+
+# cyan
+color6  = #75b5aa
+color14 = #96e8da
+
+# white
+color7  = #d0d0d0
+color15 = #f5f5f5
+
+[options]
+font = Consolas for Powerline 10
+clickable_url = true
+browser = firefox-nightly
+
+# vim: set ft=dosini:
