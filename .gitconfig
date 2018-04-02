@@ -36,9 +36,10 @@
 [alias]
 	a = add
 	ci = commit
+	cim = commit -m
 	co = checkout
-    d = diff
-    ds = diff --stat
+	d = diff
+	ds = diff --stat
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	p = push
 	st = status
