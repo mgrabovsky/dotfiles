@@ -21,6 +21,9 @@ PS2='\[\033[31m>\]\[\033[0m\] '
 #export PROMPT_DIRTRIM=3
 export PAGER BROWSER PDFVIEWER PSVIEWER EDITOR PS1 PS2
 
+## Use a default width of 80 for manpages for more convenient reading
+export MANWIDTH=${MANWIDTH:-80}
+
 export RLWRAP_HOME=~/.rlwrap
 
 # Add cabal-installed and user-specific executables to PATH
@@ -71,19 +74,17 @@ export LESS_TERMCAP_ue=$default
 update() {
 	OPTIND=1
 	pkgs=1
-	locate=1
 	vim=1
-	cabal=1
 	stack=1
+	locate=1
 
 	# Parse arguments
 	while getopts 'PLVCS' opt; do
 		case "$opt" in
 			P) pkgs= ;;
-			L) locate= ;;
 			V) vim= ;;
-			C) cabal= ;;
             S) stack= ;;
+			L) locate= ;;
 		esac
 	done
 
@@ -91,23 +92,19 @@ update() {
 
 	if [[ -n "$pkgs" ]]; then
 		echo -e "\033[32mUpdating packages...\033[0m"
-		sudo pacman -Syu
-	fi
-	if [[ -n "$locate" ]]; then
-		echo -e "\n\033[32mUpdating locate database...\033[0m"
-		sudo updatedb && echo 'Done'
+		sudo pacman -Syu --color=auto
 	fi
 	if [[ -n "$vim" ]]; then
 		echo -e "\n\033[32mUpdating vim plugins...\033[0m"
 		~/.vim/bundle/update-all.sh
 	fi
-	if [[ -n "$cabal" ]]; then
-		echo -e "\n\033[32mUpdating Cabal package database...\033[0m"
-		cabal update
-	fi
 	if [[ -n "$stack" ]]; then
 		echo -e "\n\033[32mUpdating Stack package index...\033[0m"
 		stack update
+	fi
+	if [[ -n "$locate" ]]; then
+		echo -e "\n\033[32mUpdating locate database...\033[0m"
+		sudo updatedb && echo 'Done'
 	fi
 
 	unset opt pkgs locate vim cabal stack
@@ -173,16 +170,57 @@ gpg-edit() {
 
 	tmpfile=`mktemp`
 	# Use pipe redirection to avoid overwriting confirmations
-	gpg -d $1 > $tmpfile && $EDITOR $tmpfile && gpg -o - -e $tmpfile > $1
+    gpg -d $1 > $tmpfile && $EDITOR $tmpfile && gpg -o $1 -e $tmpfile
+    if [[ $? > 0 ]]; then
+        shred -zun 30 $tmpfile
+        echo -e "\x1b[1;31mAn error occured when editing file\x1b[0m" >&2
+        return 1
+    fi
+
 	shred -zun 30 $tmpfile
 
 	unset tmpfile
 }
 
 gitcd() {
+	[[ $# > 0 && $# < 3 ]] || return 1
+
 	local base=$(basename $1)
-	local dir=${base%.git}
+	if [[ $# == 2 && ! -e $2 ]]; then
+	    local dir=$2
+    else
+        local dir=${base%.git}
+    fi
 	git clone $1 $dir && cd $dir
+}
+
+gh() {
+    if [[ "$1" == "-r" ]]; then
+        local url=https://github.com/$2.git
+    else
+        local url=git+ssh://git@github.com:$1.git
+    fi
+    echo $url
+}
+
+zipfiles() {
+	output_file=$1; shift
+	zip -rq - $* | pv -bep -s $(du -bsc $* | tail -1 | cut -f1) > $output_file
+	echo -e '\x1b[32mDone.\x1b[0m'
+}
+
+temp() {
+    echo -n 'Thermal 0: '
+    awk '{print $1/1000, "°C"}' < /sys/devices/virtual/thermal/thermal_zone0/temp 
+    # or /sys/class/thermal/thermal_zoneN/temp
+}
+
+env! () {
+    # If virtualenv is already set up, activate it
+    [[ -d ${1:-env} ]] && source ${1:-env}/bin/activate && return
+    # Otherwise install the environment and requirements if available
+    virtualenv ${1:-env} && source ${1:-env}/bin/activate &&
+        [[ -f requirements.txt ]] && pip install -r requirements.txt
 }
 
 run_and_detach() { "$@" > /dev/null 2>&1 & disown $! ; }
@@ -191,15 +229,19 @@ coqide() { run_and_detach /usr/bin/coqide "$@" ; }
 rlcoq() { rlwrap /usr/bin/coqtop "$@" ; }
 mkcd() { mkdir -p "$1" && cd "$1" ; }
 hgrep() { history | egrep -i "$1" ; }
-alias cd-='cd -'
-alias pgrep='pgrep -a'
-alias sshe='exec ssh'
 
-# TODO: reiterate
-alias password='< /dev/urandom tr -dc [:alnum:] | head -c 40; echo;'
+alias cal='/usr/bin/cal -my'
+alias cd-='cd -'
+alias jj='jobs -l'
+alias open='xdg-open'
+# TODO: reiterate on these two
 alias password2='< /dev/urandom tr -dc [:graph:] | head -c 40; echo;'
+alias password='< /dev/urandom tr -dc [:alnum:] | head -c 40; echo;'
+alias pgrep='pgrep -a'
+alias R='R --quiet --no-save'
+alias scp='rsync --partial --progress --rsh=ssh'
+alias sshe='exec ssh'
 alias wcrb='mpv http://audio.wgbh.org/otherWaysToListen/classicalNewEngland.pls'
-alias t='python2 ~/builds/t/t.py --task-dir ~/.tasks --list tasks'
 
 # Display a Markdown file as a man page
 # Source: http://stackoverflow.com/a/7603703/227159
