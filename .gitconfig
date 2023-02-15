@@ -1,46 +1,81 @@
 [user]
-	name = Matěj Grabovský
+	name  = Matěj Grabovský
 	email = matej@mgrabovsky.net
 [core]
-	pages = less
+	pages = less -RF
+[fetch]
+	prune = true
+[merge]
+	autostash = true
 [push]
 	default = simple
 [pull]
 	rebase = true
+[rebase]
+	autostash = true
+	instructionFormat = (%an <%ae>) %s
+	instructionFormat = %s — %an <%ae>
 [color]
 	interactive = auto
-	ui = auto
-	pager = true
+	ui          = auto
+	pager       = true
 [color "status"]
-	branch = black yellow
-	nobranch = white red bold
-	untracked = magenta
-	changed = cyan
-	added = blue
+	branch      = black yellow
+	nobranch    = white red bold
+	untracked   = magenta
+	changed     = cyan
+	added       = blue
 [color "branch"]
-	current = black yellow
+	current     = black yellow
 [color "diff"]
-	meta = magenta
-	hunk = magenta
-	commit = blue
-	frag = magenta
-	new = green
-	old = red
-	whitespace = white red
+	meta        = magenta
+	hunk        = magenta
+	commit      = blue
+	frag        = magenta
+	new         = green
+	old         = red
+	whitespace  = white red
 [format]
 	pretty = oneline
 [log]
 	abbrevCommit = true
-	decorate = false
-	date = relative
+	decorate     = false
+	date         = relative
 [alias]
-	a = add
-	ci = commit
-	cim = commit -m
-	co = checkout
-	d = diff
-	ds = diff --stat
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	p = push
-	st = status
-	ru = remote update
+	a     = add
+	bd-   = branch -D @{-1}
+	bl    = !git --no-pager branch --list --no-color
+	ci    = commit
+	cia   = commit --amend
+	cim   = commit -m
+	co    = checkout
+	copr  = "!f() { git fetch origin pull/$1/head:pull/$1 && git checkout pull/$1; }; f"
+	cp    = cherry-pick
+	d     = diff
+	dc    = diff --cached
+	ds    = diff --stat
+	dw    = diff --word-diff
+	lg    = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lon   = log --color --decorate --pretty=medium
+	los   = log --no-merges --pretty=format:'%Cblue%h%Creset %C(yellow)<%ae>%Creset %s' --abbrev-commit
+	p     = push
+	pop   = stash pop
+	rc    = rebase --continue
+	re    = restore
+	ri    = rebase --interactive
+	rias  = rebase --interactive --autosquash
+	rl    = !git remote -v | awk '{print $1, \"\\t\", $2}' | sort -u
+	ru    = remote update
+	sd    = stash drop
+	shw   = show
+	sl    = !git --no-pager stash list
+	ss    = stash show -p
+	st    = status
+	sw    = switch
+	shwp  = show --pretty=medium --date=iso
+	tl    = tag --list --sort=-authordate
+	wt    = worktree
+[init]
+	defaultBranch = main
+[advice]
+	skippedCherryPicks = false
