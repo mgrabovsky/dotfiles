@@ -69,6 +69,8 @@
 	sd    = stash drop
 	shw   = show
 	sl    = !git --no-pager stash list
+	sm    = submodule
+	smu   = submodule update --recursive
 	ss    = stash show -p
 	st    = status
 	sw    = switch
