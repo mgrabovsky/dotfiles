@@ -1,6 +1,6 @@
 [user]
-	name  = Matěj Grabovský
-	email = matej@mgrabovsky.net
+	name  = Matěj Kolouch Grabovský
+	email = matej@mgrabovsky.eu
 [core]
 	pages = less -RF
 [fetch]
@@ -20,23 +20,23 @@
 	ui          = auto
 	pager       = true
 [color "status"]
-	branch      = black yellow
-	nobranch    = white red bold
-	untracked   = magenta
-	changed     = cyan
-	added       = blue
+	branch     = black yellow
+	nobranch   = white red bold
+	untracked  = magenta
+	changed    = cyan
+	added      = blue
 [color "branch"]
-	current     = black yellow
+	current    = black yellow
 [color "diff"]
-	meta        = magenta
-	hunk        = magenta
-	commit      = blue
-	frag        = magenta
-	new         = green
-	old         = red
-	whitespace  = white red
+	meta       = magenta
+	hunk       = magenta
+	commit     = blue
+	frag       = magenta
+	new        = green
+	old        = red
+	whitespace = white red
 [format]
-	pretty = oneline
+	pretty     = oneline
 [log]
 	abbrevCommit = true
 	decorate     = false
@@ -45,16 +45,20 @@
 	a     = add
 	bd-   = branch -D @{-1}
 	bl    = !git --no-pager branch --list --no-color
+	bla   = !git --no-pager branch --list --no-color --all
 	ci    = commit
 	cia   = commit --amend
+	cif   = commit --fixup
 	cim   = commit -m
 	co    = checkout
 	copr  = "!f() { git fetch origin pull/$1/head:pull/$1 && git checkout pull/$1; }; f"
 	cp    = cherry-pick
 	d     = diff
 	dc    = diff --cached
+	dcw   = diff --cached --word-diff
 	ds    = diff --stat
 	dw    = diff --word-diff
+	empty = commit --allow-empty-messages --message ''
 	lg    = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lon   = log --color --decorate --pretty=medium
 	los   = log --no-merges --pretty=format:'%Cblue%h%Creset %C(yellow)<%ae>%Creset %s' --abbrev-commit
