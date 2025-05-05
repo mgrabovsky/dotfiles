@@ -1,0 +1,10 @@
+ceil <- ceiling
+
+yhour <- \(dt) hour(dt) + (yday(dt) - 1) * 24
+mhour <- \(dt) hour(dt) + (day(dt) - 1) * 24
+whour <- \(dt) hour(dt) + (wday(dt) - 1) * 24
+
+softmax <- \(x) exp(x) / sum(exp(x))
+
+month.len <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+

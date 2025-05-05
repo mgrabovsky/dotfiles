@@ -1,0 +1,13 @@
+source(file.path(Sys.getenv("HOME"), ".Rprofile"))
+
+ggplot2::theme_set(
+  hrbrthemes::theme_ipsum_rc(
+    axis_title_size = 12,
+    base_size = 12,
+    grid = "Y"
+  )
+)
+
+options(
+  defaultPackages = c("base", "stats", "graphics", "arrow", "readxl", "tidyverse")
+)
