@@ -1,0 +1,10 @@
+[flake8]
+# E221 multiple spaces before operator
+# E302 expected 2 blank lines, found 1
+# E305 expected 2 blank lines after definition
+# E501 line too long
+# W391 blank line at end of file
+ignore = E221, E302, E305, E501, W391
+max-complexity = -1
+max-doc-length = 72
+max-line-length = 85
