@@ -23,13 +23,9 @@ General inspirational sources:
 
 -   [Bash](#bash)
 -   [tmux](#tmux)
--   [irssi](#irssi)
--   [Xorg](#xorg)
--   [Xmonad](#xmonad)
 -   [Git](#git)
 -   [Vim](#vim)
     -   [Plugins](#plugins)
--   [Syslinux](#syslinux)
 -   [Copyright](#copyright)
 
 ## Bash
@@ -65,52 +61,19 @@ Here is a list of plugins that I deem to be very useful when using Vim as your m
 editor in everyday work.
 
 -   **Essential**
-    -   [pathogen.vim](https://github.com/tpope/vim-pathogen) – allows plugins to be
-        placed in separate directories (alternatives:
-        [Vundle](https://github.com/gmarik/Vundle.vim))
     -   [NERD Tree](https://github.com/scrooloose/nerdtree) – tree explorer sidebar
-    -   [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) – code completion
     -   [vim-repeat](https://github.com/tpope/vim-repeat) – allows dot-repeating of
         plugin commands
     -   [vim-surround](https://github.com/tpope/vim-surround) – easy manipulation of
         surrounding characters
-
 -   **Nice to have**
     -   [ack.vim](https://github.com/mileszs/ack.vim) – integration with ack
     -   [airline](https://github.com/bling/vim-airline) – improved statusline
     -   [Align](https://github.com/vim-scripts/Align) – align multiple lines
         according to a regex (see also: [Tabular](https://github.com/godlygeek/tabular))
-    -   [auto-pairs](https://github.com/jiangmiao/auto-pairs) – automatic closing of
-        brackets
     -   [vim-colorschemes](https://github.com/flazz/vim-colorschemes) – tons of
         pretty colorschemes
-    -   [CtrlP](http://kien.github.io/ctrlp.vim/) – (warm and) fuzzy
-        file/buffer/project search
     -   [fugitive](https://github.com/tpope/vim-fugitive.git) – integration with Git
-    -   [NrrwRgn](https://github.com/chrisbra/NrrwRgn) – focus on and edit individual
-        snippets of code
-    -   [vimux](https://github.com/benmills/vimux) – integration with tmux
-
--   **Language-specific**
-    -   [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
-        – CoffeeScript highlighting
-    -   [coq.vim](https://github.com/mgrabovsky/coq.vim) – Coq syntax highlighting
-    -   [clojure-static](https://github.com/guns/vim-clojure-static) – extra goodies
-        for working with Clojure
-    -   [fireplace](https://github.com/tpope/vim-fireplace) – Clojure REPL in Vim
-        -   [vim-fireplace-easy](https://github.com/ctford/vim-fireplace-easy)
-            – a sample configuration
-    -   [closetag.vim](https://github.com/vim-scripts/closetag.vim) – easier closing
-        of XML/HTML tags
-    -   [Emmet.vim](https://github.com/mattn/emmet-vim) – faster writing of XML/HTML & CSS
-    -   [vim-javascript](https://github.com/pangloss/vim-javascript) – improved
-        indentation and highlighting for JS
-    -   [vim-jsx](https://github.com/mxw/vim-jsx) – support for React JSX
-    -   [LaTeX-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) – alleviates the
-        pain of writing LaTeX by a little bit
-    -   [rust.vim](https://github.com/rust-lang/rust.vim) – Rust syntax highlighting
-    -   [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) – syntax
-        highlighting for Haskell sublanguages, Unicode conceals, and other goodies
 
 ## Copyright
 
