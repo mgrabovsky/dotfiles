@@ -45,30 +45,6 @@ There are two files for setting up the bash environment:
 
 `.tmux.conf`
 
-## irssi
-
-TODO
-
-## Xorg
-
-There are multiple configuration files for various components of the X Windows System
-and applications on top of it.
-
--   `.xinitrc`
--   `.Xresources` – general X settings and xterm configuration
--   `.xbindkeysrc` – custom bindings for standard keys and shortcuts
--   `.XCompose` – custom sequences for the Compose key
-    -   another resource: [kragen/xcompose](https://github.com/kragen/xcompose)
-
-## Xmonad
-
-`.xmonad/xmonad.hs`
-`.xmobarrc`
-
-## termite
-
-`.config/termite/`
-
 ## Git
 
 `.gitconfig`
@@ -136,10 +112,6 @@ editor in everyday work.
     -   [vim2hs-flexible](https://github.com/lpil/vim2hs-flexible) – syntax
         highlighting for Haskell sublanguages, Unicode conceals, and other goodies
 
-## Syslinux
-
-`boot/syslinux/syslinux.cfg`
-
 ## Copyright
 
 Written since 2015 by Matěj Kolouch Grabovský <matej at mgrabovsky eu>
@@ -149,5 +121,3 @@ and neighboring rights to this software to the public domain worldwide. This sof
 is distributed without any warranty.
 
 You should have received a copy of the CC0 Public Domain Dedication along with this
-
-<!-- vim: set et: -->
