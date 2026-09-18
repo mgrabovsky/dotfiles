@@ -9,5 +9,9 @@ ggplot2::theme_set(
 )
 
 options(
-  defaultPackages = c("base", "stats", "graphics", "arrow", "readxl", "tidyverse")
+  defaultPackages = c("base", "stats", "graphics", "nanoparquet", "readxl", "tidyverse")
 )
+
+scale_y_percent <- function(...) {
+  scale_y_continuous(..., labels = scales::label_percent())
+}

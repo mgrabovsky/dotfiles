@@ -8,3 +8,68 @@ softmax <- \(x) exp(x) / sum(exp(x))
 
 month.len <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
+# TODO: Check that the input is inside the support everywhere.
+#   • μ - σ / ξ <= x  for ξ > 0
+#   • x \in R         for ξ = 0
+#   • x <= μ - σ / ξ  for ξ < 0
+# TODO: Return log lik. of -Inf or likelihood of 0 when x is outside of support.
+
+# Density function (pdf) for the generalised extreme value distribution (GEV).
+# The parameters are location (μ), scale (σ) and shape (ξ).
+dgev <- function(x, location = 0, scale = 1, shape = 0, log = FALSE) {
+  n <- length(x)
+
+  if (length(shape) == 1)
+    shape <- rep(shape, n)
+  else if (length(shape) != n)
+    stop("shape parameter must be either a single number or a vector of same length as x")
+
+  s <- (x - location) / scale
+
+  t <- ifelse(shape == 0,
+              exp(-s),
+              (1 + shape * s)^(-1 / shape))
+
+  log_density <- (1 + shape) * log(t) - t - log(scale)
+
+  if (log)
+    return(log_density)
+  return(exp(log_density))
+}
+
+# Distribution function (cdf) for the generalised extreme value distribution (GEV).
+pgev <- function(q, location = 0, scale = 1, shape = 0) {
+  if (!is.numeric(shape) || length(shape) != 1)
+    stop("shape parameter must be a single number")
+
+  s <- (q - location) / scale
+
+  if (shape == 0)
+    return(exp(-exp(-s)))
+  return(exp(-(1 + shape * s)^(-1 / shape)))
+}
+
+# Quantile function for the generalised extreme value distribution (GEV).
+qgev <- function(p, location = 0, scale = 1, shape = 0) {
+  if (!is.numeric(shape) || length(shape) != 1)
+    stop("shape parameter must be a single number")
+
+  if (shape == 0)
+    return(location - scale * log(-log(p)))
+  return(location + scale * ((-log(p))^(-shape) - 1) / shape)
+}
+
+# Random sampling for the generalised extreme value distribution (GEV).
+rgev <- function(n, location = 0, scale = 1, shape = 0) {
+  if (!is.numeric(shape) || length(shape) != 1)
+    stop("shape parameter must be a single number")
+
+  U <- runif(n, 0, 1)
+
+  return(qgev(U, location, scale, shape))
+}
+
+# The logarithm extended to the whole real line,
+# reflected and fused at zero.
+bilog <- \(x) ifelse(x >= 0, log(1 + x), -log(1 - x))
+bilog_inv <- \(y) ifelse(x >= 0, exp(x) - 1, 1 - exp(-x))
