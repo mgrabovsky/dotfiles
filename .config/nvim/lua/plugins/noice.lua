@@ -1,0 +1,28 @@
+return {}
+
+--   "folke/noice.nvim",
+--   event = "VeryLazy",
+--   dependencies = {
+--     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+--     "MunifTanjim/nui.nvim",
+--     -- OPTIONAL:
+--     --   `nvim-notify` is only needed, if you want to use the notification view.
+--     --   If not available, we use `mini` as the fallback
+--     "rcarriga/nvim-notify",
+--   },
+--   opts = {
+--     -- lsp = {
+--     --   -- Override markdown rendering so that cmp and other plugins use Treesitter.
+--     --   override = {
+--     --     -- ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+--     --     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+--     --     ["vim.lsp.util.stylize_markdown"] = true,
+--     --   },
+--     -- },
+--     presets = {
+--       bottom_search = true,
+--       command_palette = false,
+--       long_messages_to_split = true,
+--     },
+--   },
+-- }
