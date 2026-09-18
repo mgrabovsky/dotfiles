@@ -142,7 +142,7 @@ editor in everyday work.
 
 ## Copyright
 
-Written in 2015 by Matěj Grabovský <matej.grabovsky at gmail>
+Written since 2015 by Matěj Kolouch Grabovský <matej at mgrabovsky eu>
 
 To the extent possible under law, the author has dedicated all copyright and related
 and neighboring rights to this software to the public domain worldwide. This software
